@@ -23,7 +23,7 @@ node {
       archiveArtifacts 'target/*.war'
    }
   stage('Post') {
-      gsutil cp 'target/*.jar' 'gs://jenkins--bucket'
+      gsutil cp 'target/*.war' 'gs://jenkins--bucket'
     googleStorageUpload bucket: 'gs://expbuck', credentialsId: 'project-01', pattern: 'target/*.war'
    }   
 }
