@@ -20,10 +20,10 @@ node {
    }
    stage('Results') {
      junit '**/target/surefire-reports/TEST-*.xml'
-      archiveArtifacts 'target/*.war'
+      archiveArtifacts 'target/*.jar'
    }
   stage('Post') {
-      gsutil cp 'target/*.war' 'gs://jenkins--bucket'
-    googleStorageUpload bucket: 'gs://expbuck', credentialsId: 'project-01', pattern: 'target/*.war'
+      gsutil cp 'target/*.jar' 'gs://jenkins--bucket'
+    googleStorageUpload bucket: 'gs://expbuck', credentialsId: 'project-01', pattern: 'target/*.jar'
    }   
 }
